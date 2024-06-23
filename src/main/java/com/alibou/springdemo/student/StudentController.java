@@ -9,8 +9,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
+
+    private StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @GetMapping
-    public List<String> findAllStudents(){
-        return List.of("Alibou","Hello World");
+    public List<Student> findAllStudents(){
+        return studentService.findAllStudents();
     }
 }
